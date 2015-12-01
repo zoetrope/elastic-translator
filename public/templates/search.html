@@ -1,0 +1,25 @@
+<div class="container" ng-controller="searchController">
+  <form role="form" class="search-form" ng-submit="search(keywords)" name="searchKeywords">
+    <div class="input-group">
+      <input ng-model="keywords" placeholder="Keywords ..." type="text" class="form-control">
+      <span class="input-group-btn">
+        <button type="submit" ng-disabled="searchKeywords.$invalid">
+          <span class="fa fa-play"></span></button>
+      </span>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-12-sm">
+      <div ng-repeat="val in result.data">
+        <div class="panel panel-default">
+          <div ng-bind-html="val._source.default_text_en | hl: keywords" class="panel-heading">
+          </div>
+          <div class="panel-body">
+            {{val._source.default_text_ja}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
